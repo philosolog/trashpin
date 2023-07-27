@@ -31,7 +31,7 @@ async def help(ctx):
 	await ctx.respond("# just pin something")
 @bot.command(name="ping", description="checks my latency") # this decorator makes a slash command
 async def ping(ctx): # a slash command will be created with the name "ping"
-    await ctx.respond(f"# returned within {round(Decimal(bot.latency), 3)}ms")
+    await ctx.respond(f"# returned in {round(Decimal(bot.latency*1000), 3)}ms")
 
 
 bot.run(token)
