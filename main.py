@@ -9,8 +9,8 @@ base_dir = pathlib.Path(__file__).parent
 
 load_dotenv()
 
-if Path("ignored.env"):
-	load_dotenv(Path("ignored.env"))
+if Path("alternate.env"):
+	load_dotenv(Path("alternate.env"))
 
 token = os.getenv("TOKEN_ALTERNATE") or os.getenv("TOKEN")
 bot = discord.Bot()
@@ -23,7 +23,6 @@ async def on_ready():
 	for cog_file in glob.glob("cogs/*.py"):
 		if cog_file.name != "__init__.py":
 			await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
-
 
 @bot.slash_command(name="hello", description="Say hello to the bot")
 async def hello(ctx):
