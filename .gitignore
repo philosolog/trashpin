@@ -1,4 +1,5 @@
 venv/
 /alternate.env
+# /.env is not ignored
 /.env
 /.vscode
