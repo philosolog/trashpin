@@ -33,5 +33,4 @@ async def help(ctx):
 async def ping(ctx): # a slash command will be created with the name "ping"
     await ctx.respond(f"# returned in {round(Decimal(bot.latency*1000), 3)}ms")
 
-
 bot.run(token)
