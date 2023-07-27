@@ -17,6 +17,7 @@ bot = discord.Bot()
 
 @bot.event
 async def on_ready():
+	print(f"User: {bot.user} (ID: {bot.user.id})")
 	await bot.change_presence(status=discord.Status.dnd, activity=discord.Game("with pins.."))
 
 	# load cogs
@@ -24,8 +25,8 @@ async def on_ready():
 		if cog_file.name != "__init__.py":
 			await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
 
-@bot.slash_command(name="hello", description="Say hello to the bot")
-async def hello(ctx):
-	await ctx.respond("Hey!")
+@bot.slash_command(name="help", description="a bit of what i can do")
+async def help(ctx):
+	await ctx.respond("# just pin something")
 
 bot.run(token)
