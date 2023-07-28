@@ -3,3 +3,5 @@ venv/
 # /.env is not ignored
 /.env
 /.vscode
+/__pycache__
+/cogs/__pycache__
