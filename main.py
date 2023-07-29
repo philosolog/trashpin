@@ -2,7 +2,10 @@ import discord
 import settings
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix=commands.when_mentioned, intents=discord.Intents.default())
+intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True # ?: Is this necessary?
+bot = commands.Bot(command_prefix=commands.when_mentioned, intents=intents)
 bot.remove_command("help")
 
 for cog_file in settings.cogs_directory.glob("*.py"):
@@ -11,6 +14,10 @@ for cog_file in settings.cogs_directory.glob("*.py"):
 
 @bot.event
 async def on_ready():
-	await bot.change_presence(status=discord.Status.online, activity=discord.Game(""))
+	print(
+		f"{bot.user} ({bot.user.id}) ready.")
+
+	await bot.change_presence(status=discord.Status.dnd, activity=discord.Game("with pins.."))
+
 
 bot.run(settings.token)
