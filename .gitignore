@@ -1,7 +1,7 @@
 venv/
 /alternate.env
-# /.env is not ignored
 /.env
 /.vscode
 /__pycache__
 /cogs/__pycache__
+debug/alternate.env

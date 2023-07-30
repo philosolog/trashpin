@@ -14,10 +14,8 @@ for cog_file in settings.cogs_directory.glob("*.py"):
 
 @bot.event
 async def on_ready():
-	print(
-		f"{bot.user} ({bot.user.id}) ready.")
+	print(f"{bot.user} ({bot.user.id}) ready.")
 
 	await bot.change_presence(status=discord.Status.dnd, activity=discord.Game("with pins.."))
-
 
 bot.run(settings.token)
