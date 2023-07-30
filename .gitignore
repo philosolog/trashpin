@@ -6,3 +6,4 @@ venv/
 /__pycache__
 /cogs/__pycache__
 debug/alternate.env
+/main/__pycache__
