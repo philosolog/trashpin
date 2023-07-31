@@ -1,6 +1,6 @@
 venv/
 /alternate.env
-# /.env is ignored by gitignore?
+# ?: /.env is ignored by gitignore?
 /.env
 /.vscode
 /__pycache__
