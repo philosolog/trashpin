@@ -18,7 +18,7 @@ def main():
 	async def on_ready():
 		print(f"{bot.user} ({bot.user.id}) ready.")
 
-		await bot.change_presence(status=discord.Status.dnd, activity=discord.Game("with pins.."))
+		await bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.listening, name=" pins"))
 	bot.run(settings.token)
 
 if __name__ == "__main__":
