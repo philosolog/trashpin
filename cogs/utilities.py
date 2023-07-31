@@ -41,13 +41,16 @@ class utilities(discord.Cog, name="utilities"):
 		guilds = sqlite3.connect(settings.guilds_directory)
 		guilds_cursor = guilds.cursor()
 		
-		if guilds_cursor.execute("select archive_channel_id from guilds where guild_id = ?", (ctx.guild_id,)).fetchone()[0] == 0:
-			await ctx.respond("# pin logging isn't enabled in this server.. try `/enable [channel]` to get started", ephemeral=True)
-		else:
-			guilds_cursor.execute("INSERT OR REPLACE INTO guilds (guild_id, archive_channel_id) VALUES (?, ?)", (ctx.guild_id, 0))
-			guilds.commit()
+		try:
+			if guilds_cursor.execute("select archive_channel_id from guilds where guild_id = ?", (ctx.guild_id,)).fetchone()[0] == 0:
+				await ctx.respond("# pin logging isn't enabled in this server.. try `/enable [channel]` to get started", ephemeral=True)
+			else:
+				guilds_cursor.execute("INSERT OR REPLACE INTO guilds (guild_id, archive_channel_id) VALUES (?, ?)", (ctx.guild_id, 0))
+				guilds.commit()
 
-			await ctx.respond("# pins are no longer being archived ☹", ephemeral=True)
+				await ctx.respond("# pins are no longer being archived ☹", ephemeral=True)
+		except:
+			await ctx.respond("# pin logging isn't enabled in this server.. try `/enable [channel]` to get started", ephemeral=True)
 
 		guilds_cursor.close()
 		guilds.close()

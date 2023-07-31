@@ -12,7 +12,7 @@ def main():
 	for cog_file in settings.cogs_directory.glob("*.py"):
 		if cog_file.name != "__init__.py":
 			bot.load_extension(f"cogs.{cog_file.name[:-3]}")
-			print("COG LOADED: " + cog_file.name)
+			print("cog loaded: " + cog_file.name)
 
 	@bot.event
 	async def on_ready():
