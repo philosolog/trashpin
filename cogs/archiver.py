@@ -9,7 +9,7 @@ class archiver(discord.Cog, name="archiver"):
 	def __init__(self, bot):
 		self.bot = bot
 	@commands.Cog.listener()
-	async def on_message_edit(self, before, after):
+	async def on_message_edit(self, before, after): # TODO: Add channel-ignoring utility.
 		if after.pinned == True:
 			guilds = sqlite3.connect(settings.guilds_directory)
 			guilds_cursor = guilds.cursor()
@@ -23,6 +23,7 @@ class archiver(discord.Cog, name="archiver"):
 			embed.set_author(
 				name=after.author.display_name,
 				icon_url=after.author.display_avatar.url,
+				url=f"https://discord.com/channels/{after.guild.id}/{after.channel.id}/{after.id}"
 			)
 
 			if after.attachments:
@@ -30,7 +31,7 @@ class archiver(discord.Cog, name="archiver"):
 
 			embed.set_footer(text=f"#{after.channel}")
 
-			try: # channel = self.bot.get_channel(1134917801732227072) # TODO: Save channels per server.
+			try:
 				archive_channel_id = guilds_cursor.execute("select archive_channel_id from guilds where guild_id = ?", (after.guild.id,)).fetchone()[0]
 
 				archive_channel = self.bot.get_channel(archive_channel_id)
@@ -42,7 +43,7 @@ class archiver(discord.Cog, name="archiver"):
 
 			try:
 				await archive_channel.send(
-					content=f"https://discord.com/channels/{after.guild.id}/{after.channel.id}/{after.id} by {after.author.mention}",
+					content=f"https://discord.com/channels/{after.guild.id}/{after.channel.id}/{after.id} pinned by [pinner]",
 					embed=embed,
 					silent=True
 				) # TODO: Ping who pinned; RETHINK if it is necessary for silent=True...
