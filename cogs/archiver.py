@@ -7,7 +7,7 @@ class archiver(discord.Cog, name="archiver"):
 	def __init__(self, bot):
 		self.bot = bot
 	@commands.Cog.listener()
-	async def on_message_edit(self, before, after): # TODO: Refactor this method...
+	async def on_message_edit(self, before, after):
 		if after.pinned == True:
 			embed = discord.Embed(
 				description=after.content,
@@ -22,11 +22,14 @@ class archiver(discord.Cog, name="archiver"):
 			if after.attachments:
 				embed.set_image(url=after.attachments[0].url)
 
-			embed.set_footer(text='#{}'.format(after.channel))
+			embed.set_footer(text=f"#{after.channel}")
 
 			channel = self.bot.get_channel(1134917801732227072) # TODO: Save channels per server.
-			await channel.send(content=f"https://discord.com/channels/{after.guild.id}/{after.channel.id}/{after.id} by {after.author.mention}", embed=embed, silent=True) # TODO: Ping who pinned; RETHINK if it is necessary for silent=True...
-
+			await channel.send(
+				content=f"https://discord.com/channels/{after.guild.id}/{after.channel.id}/{after.id} by {after.author.mention}",
+				embed=embed,
+				silent=True
+			) # TODO: Ping who pinned; RETHINK if it is necessary for silent=True...
 
 def setup(bot):
 	bot.add_cog(archiver(bot))
