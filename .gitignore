@@ -8,3 +8,4 @@ venv/
 debug/alternate.env
 /main/__pycache__
 /databases/guilds.db
+databases/guilds.db
