@@ -14,10 +14,16 @@ class archiver(discord.Cog, name="archiver"):
 			guilds = sqlite3.connect(settings.guilds_directory)
 			guilds_cursor = guilds.cursor()
 			archive_channel = None
+			pinner_string = None
+			async for entry in after.guild.audit_logs(action=discord.AuditLogAction.message_pin): # !: Might have an issue with detecting the right pin from the audit log. # TODO: Check if it iterates through old logs- that might cause time issues.
+				if entry.extra.message_id == after.id:
+					pinner_string = f"pinned by {entry.target.mention}" # TODO: Look into preference of keeping "pinned by" out of this exclusion..?
+
+					break # ?: Will this end the loop? (regarding the time issue)
 			embed = discord.Embed(
 				description=after.content,
 				color=0x7289da,
-				timestamp=datetime.datetime.utcfromtimestamp(int(time.time()))
+				timestamp=before.created_at,
 			)
 
 			embed.set_author(
@@ -35,7 +41,7 @@ class archiver(discord.Cog, name="archiver"):
 				archive_channel_id = guilds_cursor.execute("select archive_channel_id from guilds where guild_id = ?", (after.guild.id,)).fetchone()[0]
 
 				archive_channel = self.bot.get_channel(archive_channel_id)
-			except TypeError: # ?: Is it correct to use TypeError?
+			except: # ?: Is it correct to use TypeError?
 				pass
 
 			guilds_cursor.close()
@@ -43,7 +49,7 @@ class archiver(discord.Cog, name="archiver"):
 
 			try:
 				await archive_channel.send(
-					content=f"https://discord.com/channels/{after.guild.id}/{after.channel.id}/{after.id} pinned by [pinner]",
+					content=f"https://discord.com/channels/{after.guild.id}/{after.channel.id}/{after.id} {pinner_string}",
 					embed=embed,
 					silent=True
 				) # TODO: Ping who pinned; RETHINK if it is necessary for silent=True...
