@@ -21,19 +21,21 @@ class utilities(discord.Cog, name="utilities"):
 	@commands.slash_command()
 	async def enable(self, ctx: discord.ApplicationContext, channel: typing.Union[discord.TextChannel, discord.VoiceChannel, discord.ForumChannel]): # ?: Does it error when the first form is not provided? # TODO: Make channel-type messagability checking.
 		"""enable my logging (to specified channel)"""
+		if ctx.author.guild_permissions.administrator: # TODO: Create a user-necessary permissions list.
+			if channel.can_send(): # TODO: Add the checking of permissions.
+				guilds = sqlite3.connect(settings.guilds_directory)
+				guilds_cursor = guilds.cursor()
 
-		if channel.can_send(): # TODO: Add the checking of permissions.
-			guilds = sqlite3.connect(settings.guilds_directory)
-			guilds_cursor = guilds.cursor()
+				guilds_cursor.execute("INSERT OR REPLACE INTO guilds (guild_id, archive_channel_id) VALUES (?, ?)", (ctx.guild_id, channel.id))
+				guilds.commit()
+				guilds_cursor.close()
+				guilds.close()
 
-			guilds_cursor.execute("INSERT OR REPLACE INTO guilds (guild_id, archive_channel_id) VALUES (?, ?)", (ctx.guild_id, channel.id))
-			guilds.commit()
-			guilds_cursor.close()
-			guilds.close()
-
-			await ctx.respond(f"# pins will now be saved to {channel.mention}", ephemeral=True)
+				await ctx.respond(f"# pins will now be saved to {channel.mention}", ephemeral=True)
+			else:
+				await ctx.respond("# i can't send messages to that channel", ephemeral=True)
 		else:
-			ctx.respond("# i can't send messages to that channel", ephemeral=True)
+			await ctx.respond("# in order to do that, you need `administrator` permissions in the server", ephemeral=True) # TODO: Make this a part of a set of general error messages.
 	@commands.slash_command()
 	async def disable(self, ctx: discord.ApplicationContext):
 		"""disable my logging"""
