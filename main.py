@@ -5,7 +5,7 @@ from discord.ext import commands
 def main():
 	intents = discord.Intents.default()
 	intents.members = True
-	intents.message_content = True # ?: Is this necessary?
+	intents.message_content = True # ?: Is this necessary? # TODO: Add permissions to any channel specified? A confirmation to add permissions to the bot..?
 	bot = commands.Bot(command_prefix=commands.when_mentioned, intents=intents)
 	bot.remove_command("help")
 
