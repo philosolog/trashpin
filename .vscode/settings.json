@@ -1,9 +1,0 @@
-{
-	"python.analysis.typeCheckingMode": "off",
-	"[python]": {
-		"editor.defaultFormatter": "ms-python.black-formatter"
-	},
-	"python.formatting.provider": "none",
-	"discord-chat.token": "__dcfduid=b058c33013f011ee9bea2f1016af742c;__sdcfduid=b058c33113f011ee9bea2f1016af742c71cf0ca1b379ff57c71532044d1797c14f367126f37f1e6ec4b65b501f93d5d0; __stripe_mid=91b17444-4912-4412-8da1-0c85a5e235e3e8d1b1; cf_clearance=FanSqFGx.0wJ3ZgVrOCnAAvgReIR5q__LYUcxoSkys8-1690403597-0-0.2.1690403597; __cfruid=60cdfc9d39ed16fb9fadcb1445dc3c5458470780-1690612431",
-	"sqltools.connections": []
-}
