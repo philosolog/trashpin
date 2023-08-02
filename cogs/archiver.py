@@ -15,11 +15,13 @@ class archiver(discord.Cog, name="archiver"):
 			guilds_cursor = guilds.cursor()
 			archive_channel = None
 			pinner_string = None
+
 			async for entry in after.guild.audit_logs(action=discord.AuditLogAction.message_pin): # !: Might have an issue with detecting the right pin from the audit log. # TODO: Check if it iterates through old logs- that might cause time issues.
 				if entry.extra.message_id == after.id:
 					pinner_string = f"pinned by {entry.target.mention}" # TODO: Look into preference of keeping "pinned by" out of this exclusion..?
 
 					break # ?: Will this end the loop? (regarding the time issue)
+			
 			embed = discord.Embed(
 				description=after.content,
 				color=0x7289da,
