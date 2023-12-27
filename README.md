@@ -1,5 +1,5 @@
 # What's this?
-A Discord bot I made for the logging of my pinned notes/shopping lists (for personal use). You can use this bot to handle server pins.
+A Discord bot I originally made to log my pinned notes & shopping lists (for personal use). You can use this bot to handle server pins.
 
 This project is open to suggestions and improvements; feel free to make a pull request!
 # Usage
