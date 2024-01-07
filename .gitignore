@@ -160,5 +160,6 @@ cython_debug/
 #.idea/
 
 # Project
+.vscode
 /alternate.env
 debug/alternate.env
