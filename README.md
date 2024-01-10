@@ -1,12 +1,14 @@
-# What's this?
+# 🤖 What's this? 🗑️📌
 A Discord bot I originally made to log my pinned notes & shopping lists (for personal use). You can use this bot to handle server pins.
 
 This project is open to suggestions and improvements; feel free to open an issue or make a pull request!
-# Features
+
+#### ⭐ Sound neat? I'd appreciate if you starred this repo! ⭐
+# ⚙️ Features
 Trashpin responds to pinned messages and various slash commands...
 
 #### If enabled, pinned messages are logged/archived properly if they were sent after the bot's most recent startup.
-## Commands
+## 📄 Commands 
 ```/enable [channel]```
 
 > Enables pin archiving for the specified channel.
@@ -22,10 +24,12 @@ Trashpin responds to pinned messages and various slash commands...
 ```/help```
 
 > Returns a guide on how to use the bot.
-# Usage
+# 🚀 Usage
 You can either [invite the bot](https://discord.com/api/oauth2/authorize?client_id=1133351003803091094&permissions=414464732352&scope=bot) or run it locally...
-## Running it locally
-First, rename `example.env` to `.env` and personalize its settings.
+## 🛠️ Running it locally
+First, fork (or not) and download the repository to your computer!
+
+Then, rename `example.env` to `.env` and personalize its settings.
 > If you prefer to test trashpin on an alternate Discord bot token (to debug, for example), you can add an `alternate.env` file to the `debug` folder. Make sure to configure it with the same keys as listed in `example.env`!
 
 Next, install the module requirements:
@@ -46,3 +50,6 @@ pythonw main.py
 
 ##### Alternatively, you can run `trashpin.bat` if your computer allows. This will run the script without showing the terminal, but you'll still have to download the Python requirements.
 > As a possible use for this file, you can set the `trashpin.bat` file to run on startup.
+
+# 😅 Need help?
+Feel free to discuss questions in this repository's [Q&A section](https://github.com/philosolog/trashpin/discussions/categories/q-a) or my [personal Discord server](https://discord.gg/vU82Z5NYBf) for all projects **philosolog**!
