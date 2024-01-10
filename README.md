@@ -5,9 +5,7 @@ This project is open to suggestions and improvements; feel free to open an issue
 # Features
 Trashpin responds to pinned messages and various slash commands...
 
-#### Pinned messages are logged if they were sent after the bot's most recent startup.
-<!-- TODO: Denote the most recent startup and other stats. -->
-
+#### If enabled, pinned messages are logged/archived properly if they were sent after the bot's most recent startup.
 ## Commands
 ```/enable [channel]```
 
@@ -24,12 +22,13 @@ Trashpin responds to pinned messages and various slash commands...
 ```/help```
 
 > Returns a guide on how to use the bot.
-
-<!-- TODO: Add images of usage. -->
 # Usage
 You can either [invite the bot](https://discord.com/api/oauth2/authorize?client_id=1133351003803091094&permissions=414464732352&scope=bot) or run it locally...
 ## Running it locally
-First, install the module requirements:
+First, rename `example.env` to `.env` and personalize its settings.
+> If you prefer to test trashpin on an alternate Discord bot token (to debug, for example), you can add an `alternate.env` file to the `debug` folder. Make sure to configure it with the same keys as listed in `example.env`!
+
+Next, install the module requirements:
 ```bash
 pip install -r requirements.txt
 ```
@@ -43,7 +42,7 @@ or run the script but hide the terminal:
 ```bash
 pythonw main.py
 ```
-> However you run the Python file does not matter. At the moment, I run the script from Visual Studio Code on the Raspberry Pi I have under my piano lol.
+> However you run the Python file does not matter. At the moment, I host the bot by running the script from Visual Studio Code on a Raspberry Pi I have under my piano.. lol.
 
 ##### Alternatively, you can run `trashpin.bat` if your computer allows. This will run the script without showing the terminal, but you'll still have to download the Python requirements.
 > As a possible use for this file, you can set the `trashpin.bat` file to run on startup.
