@@ -1,7 +1,7 @@
 # What's this?
 A Discord bot I originally made to log my pinned notes & shopping lists (for personal use). You can use this bot to handle server pins.
 
-This project is open to suggestions and improvements; feel free to make a pull request!
+This project is open to suggestions and improvements; feel free to open an issue or make a pull request!
 # Features
 Trashpin responds to pinned messages and various slash commands...
 
