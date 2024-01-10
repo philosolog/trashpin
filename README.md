@@ -45,5 +45,5 @@ pythonw main.py
 ```
 > However you run the Python file does not matter. At the moment, I run the script from Visual Studio Code on the Raspberry Pi I have under my piano lol.
 
-##### Alternatively, you can run the `trashpin.bat` if your computer allows. This will run the script without showing the terminal, but you'll still have to download the Python requirements.
+##### Alternatively, you can run `trashpin.bat` if your computer allows. This will run the script without showing the terminal, but you'll still have to download the Python requirements.
 > As a possible use for this file, you can set the `trashpin.bat` file to run on startup.
