@@ -5,6 +5,7 @@ import typing
 from discord.ext import commands
 from decimal import Decimal
 
+# TODO: Denote the most recent startup and other stats.
 class utilities(discord.Cog, name="utilities"):
 	def __init__(self, bot):
 		self.bot = bot
