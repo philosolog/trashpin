@@ -163,3 +163,5 @@ cython_debug/
 .vscode
 /alternate.env
 debug/alternate.env
+archive
+.ruff_cache
